@@ -1,0 +1,14 @@
+id: "analytics-widget"
+version: '1'
+displayName: "analytics-widget"
+description: |
+      Analityka
+implementation:
+  layout:
+    cols: 2
+    rows: 2
+  entryComponentName: "${HTML_TAG}"
+context:
+  schema: 'string'
+  table: 'string'
+prodReady: false

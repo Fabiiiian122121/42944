@@ -1,0 +1,70 @@
+<section class="analytics-widget">
+  <header class="analytics-header">
+    <div>
+      <span hlmBadge variant="secondary">Analityka biznesowa</span>
+      <h1>Wyniki sprzedaży</h1>
+      <p>{{ context().schema }}.{{ context().table }}</p>
+    </div>
+    <div class="health-score">
+      <span>Tempo wzrostu</span>
+      <strong>{{ growth() }}</strong>
+    </div>
+  </header>
+
+  <div class="kpi-grid">
+    @for (kpi of kpis(); track kpi.label) {
+      <article class="kpi-card">
+        <span>{{ kpi.label }}</span>
+        <strong>{{ kpi.value }}</strong>
+        <small>{{ kpi.change }} vs poprzedni okres</small>
+      </article>
+    }
+  </div>
+
+  <div class="analytics-layout">
+    <article class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Struktura kanałów</h2>
+          <p>Udział w przychodzie</p>
+        </div>
+        <span hlmBadge variant="outline">Bieżący miesiąc</span>
+      </div>
+
+      <div class="channel-list">
+        @for (channel of channels; track channel.name) {
+          <div class="channel-row">
+            <div class="channel-meta">
+              <span>{{ channel.name }}</span>
+              <strong>{{ channel.amount }}</strong>
+            </div>
+            <div class="bar-track" aria-hidden="true">
+              <div class="bar-value" [style.width.%]="channel.value"></div>
+            </div>
+            <small>{{ channel.value }}%</small>
+          </div>
+        }
+      </div>
+    </article>
+
+    <aside class="panel insight-panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Wnioski</h2>
+          <p>Priorytety dla zespołu</p>
+        </div>
+      </div>
+
+      <ul>
+        @for (insight of insights; track insight) {
+          <li>{{ insight }}</li>
+        }
+      </ul>
+
+      <div class="retention-box">
+        <span>Retencja klientów</span>
+        <strong>{{ retention() }}</strong>
+      </div>
+    </aside>
+  </div>
+</section>

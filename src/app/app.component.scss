@@ -1,0 +1,11 @@
+.widget {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
+
+.view_tab-content {
+  display: block;
+  height: calc(100vh - var(--widget-tabs-header-height));
+  overflow: auto;
+}

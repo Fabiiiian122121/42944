@@ -1,0 +1,35 @@
+<!--
+  This index is used by builder to prepare the dist index.html and when in the manifest
+  property `implementation.loadMode` has been set to `INDEX` platform will use index.html
+  from dist to load the widget.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-Equiv="Cache-Control" Content="no-cache" />
+  <meta http-Equiv="Pragma" Content="no-cache" />
+  <meta http-Equiv="Expires" Content="0" />
+  <!--
+    Those styles ensure old widgets that have been migrated (to index load mode)
+    will keep the same visual behavior as before. Widget producers can remove or
+    modify those initial styles, but this may require adjusting the widget's CSS.
+  -->
+  <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+
+      *,
+      ::after,
+      ::before {
+        box-sizing: border-box;
+      }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+  <body></body>
+</html>

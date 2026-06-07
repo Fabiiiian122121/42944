@@ -1,0 +1,33 @@
+<div class="p-6 space-y-8">
+  <div>
+    <h2 class="text-base font-semibold text-slate-800 mb-3">Przyciski (hlmBtn)</h2>
+    <div class="flex flex-wrap gap-2">
+      <button brnButton hlmBtn>Default</button>
+      <button brnButton hlmBtn variant="secondary">Secondary</button>
+      <button brnButton hlmBtn variant="outline">Outline</button>
+      <button brnButton hlmBtn variant="destructive">Destructive</button>
+      <button brnButton hlmBtn variant="ghost">Ghost</button>
+      <button brnButton hlmBtn variant="link">Link</button>
+      <button brnButton hlmBtn [disabled]="true">Disabled</button>
+    </div>
+    <div class="flex flex-wrap gap-2 mt-2">
+      <button brnButton hlmBtn size="sm">Small</button>
+      <button brnButton hlmBtn size="default">Default</button>
+      <button brnButton hlmBtn size="lg">Large</button>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="text-base font-semibold text-slate-800 mb-3">Odznaki (hlmBadge)</h2>
+    <div class="flex flex-wrap gap-2">
+      <span hlmBadge>Default</span>
+      <span hlmBadge variant="secondary">Secondary</span>
+      <span hlmBadge variant="outline">Outline</span>
+      <span hlmBadge variant="destructive">Destructive</span>
+    </div>
+  </div>
+
+  <div class="text-xs text-slate-400">
+    Kontekst: {{ context().schema }}.{{ context().table }}
+  </div>
+</div>

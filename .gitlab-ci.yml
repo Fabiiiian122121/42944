@@ -1,0 +1,47 @@
+image: docker:latest
+
+variables:
+  PROJECT_NAME: "nexus-widget"
+
+stages:
+  - build
+  - deploy
+
+build-widget-ui:
+  stage: build
+  image: node:24-bookworm-slim
+  variables:
+    CYPRESS_INSTALL_BINARY: 0
+  before_script:
+    - npm ci -f
+    - npm run pre-build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - ./dist
+  only:
+    refs:
+      - main
+
+deploy-widget-ui:
+  stage: deploy
+  image: node:24-bookworm-slim
+  variables:
+    CYPRESS_INSTALL_BINARY: 0
+    API_KEY: ${API_KEY}
+    API_KEY_PROD: ${API_KEY_PROD}
+    MARKET_URL: ${MARKET_URL}
+    MARKET_URL_PROD: ${MARKET_URL_PROD}
+    MARKETPLACE_API_PATH: ${MARKETPLACE_API_PATH}
+    MARKETPLACE_API_PATH_PROD: ${MARKETPLACE_API_PATH_PROD}
+  before_script:
+    - npm ci -f
+  script:
+    - npm run deploy
+  artifacts:
+    paths:
+      - ./dist
+  only:
+    refs:
+      - main

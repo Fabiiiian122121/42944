@@ -1,0 +1,19 @@
+@if (appService.context$ | async) {
+  @if (!contextValidation(appService.context$ | async)) {
+    <widget-no-context
+      [errorLabel]="'Przekazany kontekst nie jest poprawny'"
+    />
+  } @else if (errorMessage()) {
+    <widget-error
+      [errorMessage]="errorMessage()"
+    >
+    </widget-error>
+  } @else {
+    <widget-content
+      [context]="appService.context$ | async"
+    >
+    </widget-content>
+  }
+} @else {
+  <widget-no-context />
+}
